@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div class="jumbotron-fluid jumbotron-custom">
+    <div class="container-fluid flex-c-center text-center jumbotron-custom">
+        <h1>Customer Testimonials</h1>
+        <h5>What customers are saying about our work at Third Day Builders</h5>
+    </div>
+</div>
+
+<% testimonials.forEach(function(testimonial) { %>
+    <hr>
+    <div class="container">
+        <div class="col-12 py-5">
+            <h5>"<%= testimonial.headline %>"</h5>
+            <%- testimonial.body %>
+            <p>- <%= testimonial.reviewName %></p>
+        </div>
+    </div>
+<% }); %>
+
+<% include ../partials/footer %>

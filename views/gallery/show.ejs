@@ -1,0 +1,63 @@
+<% include ../partials/header %>
+
+<div class="container pt-5 ml-5">
+    <a href="/gallery" class="btn btn-custom">Go Back</a>
+</div>
+
+<div class="container mt-3">
+    <div class="gallery-photos">
+        <a href="changeSlide(-1)" class="gallery-arrows"><i class="fas fa-angle-left"></i></a>
+        <img id="gallery-slide" class="gallery-container" src="../imgs/gallery/<%= gallery.galleryType %><%= gallery.galleryNum %>/0-1024.jpg">
+        <a href="changeSlide(1)" class="gallery-arrows"><i class="fas fa-angle-right"></i></a> 
+    </div>
+</div>
+
+<script>
+    var current = 0;
+    var slideContainer = document.getElementById("gallery-slide");
+    var length = parseInt("<%= gallery.numItems %>");
+    var currentGallery = "<%= gallery.galleryType %>";
+    var currentGalNum = parseInt("<%= gallery.galleryNum %>");
+
+    var arrows = document.querySelectorAll(".gallery-arrows");
+    arrows.forEach(function(arrow, index){
+        arrow.addEventListener("click", (e) => {
+            if(index === 0) {
+                e.preventDefault();
+                changeSlide(-1);
+            } else if(index == 1) {
+                e.preventDefault();
+                changeSlide(1);
+            }
+        });
+    });
+
+    function changeSlide(direction) {
+        current += direction;
+        
+        if(current == length) {
+            current = 0;
+        } else if(current < 0) {
+            current = length-1;
+        }
+
+        slideContainer.src="../imgs/gallery/" + currentGallery + currentGalNum + "/" + current + "-1024.jpg";
+    }
+
+    window.onkeyup = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+        switch(key) {
+            case 39:
+                changeSlide(1);
+                break;
+            case 37: 
+                changeSlide(-1);
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+
+
+<% include ../partials/footer %>

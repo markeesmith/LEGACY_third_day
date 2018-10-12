@@ -1,0 +1,88 @@
+<% include ../partials/header %>
+
+<div class="container-fluid text-center">
+    <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert"><%= error %></div>
+    <% } else if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert"><%= success %></div>
+    <% } %>
+</div>
+
+<div class="jumbotron-fluid jumbotron-custom">
+    <div class="container-fluid flex-c-center text-center jumbotron-custom">
+        <h1>Contact Third Day Builders</h1>
+        <h5>Let's begin planning your dream home</h5>
+        <a href="/gallery" class="btn btn-custom btn-lg">View Our Work</a>
+    </div>
+</div>
+
+<hr>
+
+<form class="container" action="/contact" method="POST">
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="form-group">
+                <input type="text" name="contact[firstName]" placeholder="First Name" class="form-control" required>    
+            </div>
+            <div class="form-group">
+                <input type="text" name="contact[lastName]" placeholder="Last Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="contact[streetAddress]" placeholder="Street Address" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="contact[city]" placeholder="City" class="form-control" required>
+            </div>
+            <div class="form-group custom-control-inline d-flex flex-row align-items-center w-100">
+                <select name="contact[state]" class="custom-select">
+                    <option value="WV" selected>West Virginia</option>
+                </select>
+                <input type="text" name="contact[zipCode]" placeholder="Zip Code" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="contact[email]" placeholder="Email" class="form-control" required>
+            </div>
+             <div class="form-group">
+                <input type="tel" name="contact[phone]" placeholder="Phone Number" class="form-control" required>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="form-group">
+                <legend class="col-form-label">Type of Work (Select all that apply):</legend>
+                <div class="row flex-column container mx-auto w-50">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="chkCustom" value="custom">
+                        <label class="form-check-label" for="chkCustom">
+                            Build a Custom Home
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="chkRemodel" value="remodel">
+                        <label class="form-check-label" for="chkRemodel">
+                            Remodel a Home
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="chkAddition" value="addition">
+                        <label class="form-check-label" for="chkAddition">
+                            Addition to Home
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="number" name="contact[budget]" placeholder="Projected budget for project" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <textarea name="contact[furtherInfo]" placeholder="Please describe the project" class="form-control" required></textarea>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button type="submit" class="btn btn-custom" id="contactSub">Submit</button> 
+            </div>
+        </div>
+    </div>
+</form>
+
+<% include ../partials/footer %>

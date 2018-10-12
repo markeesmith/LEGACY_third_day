@@ -1,0 +1,126 @@
+<% include ../partials/header %>
+
+<div class="jumbotron-fluid jumbotron-custom">
+    <div class="container-fluid flex-c-center text-center jumbotron-custom">
+        <h1>Gallery of Homes, Additions, and Remodels</h1>
+        <h5>View some of the work completed by Third Day Builders</h5>
+    </div>
+</div>
+
+<hr>
+
+<div class="container-fluid px-0 mx-0">
+    <h4 class="mx-3 mb-3 mt-4 text-center">Homes</h4>
+    <div class="row">
+    <% galleries.forEach( function(gallery) { %>
+        <% if(gallery.galleryType === "home") { %>
+            <% if(gallery.galleryNum === 1) { %>
+                <div class="col-lg-6 col-sm-12 flex-c-center my-3 mx-0 px-0">
+                    <div class="sale-contain">
+                        <% if(gallery.galleryNum == 1) { %>
+                            <h1 class="sale">FOR SALE - COMING SOON</h1>
+                        <% } %>
+                    </div>
+                    <div class="w-90">
+                        <a href="/gallery/<%=gallery._id%>" class="position-relative w-100 h-100">
+                            <img class="figure-custom"
+                                srcset="
+                                imgs/gallery/home<%= gallery.galleryNum.toString() %>/0-480.jpg 480w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-767.jpg 767w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1024.jpg 1024w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1280.jpg 1280w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1280.jpg 1300w"
+                                sizes="100%" 
+                                src="imgs/gallery/home<%= gallery.galleryNum %>/0-480.jpg"
+                                alt="Home Gallery Screen">
+                        </a>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="col-lg-6 col-sm-12 flex-c-center my-3 mx-0 px-0">
+                    <div class="w-90">
+                        <a href="/gallery/<%=gallery._id%>" class="position-relative w-100 h-100">
+                            <img class="figure-custom"
+                                srcset="
+                                imgs/gallery/home<%= gallery.galleryNum.toString() %>/0-480.jpg 480w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-767.jpg 767w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1024.jpg 1024w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1280.jpg 1280w,
+                                imgs/gallery/home<%= gallery.galleryNum %>/0-1280.jpg 1300w"
+                                sizes="100%" 
+                                src="imgs/gallery/home<%= gallery.galleryNum %>/0-480.jpg"
+                                alt="Home Gallery Screen">
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    <% }); %>
+    </div>
+</div>
+
+<div class="container-fluid px-0 mx-0">
+    <h4 class="mx-3 my-3 text-center">Garages and Additions</h4>
+    <div class="row">
+    <% galleries.forEach( function(gallery) { %>
+        <% if(gallery.galleryType === "addition") { %>
+        <div class="col-lg-6 col-sm-12 flex-c-center my-3 mx-0 px-0">
+            <div class="w-90">
+                <a href="/gallery/<%=gallery._id%>">
+                    <img class="figure-custom"
+                        srcset="
+                        imgs/gallery/addition<%= gallery.galleryNum.toString() %>/0-480.jpg 480w,
+                        imgs/gallery/addition<%= gallery.galleryNum %>/0-767.jpg 767w,
+                        imgs/gallery/addition<%= gallery.galleryNum %>/0-1024.jpg 1024w,
+                        imgs/gallery/addition<%= gallery.galleryNum %>/0-1280.jpg 1280w,
+                        imgs/gallery/addition<%= gallery.galleryNum %>/0-1280.jpg 1300w"
+                        sizes="100%" 
+                        src="imgs/gallery/addition<%= gallery.galleryNum %>/0-480.jpg"
+                        alt="Addition Gallery Screen">
+                </a>
+            </div>
+        </div>
+        <% } %>
+    <% }); %>
+    </div>
+</div>
+
+<div class="container-fluid px-0 mx-0">
+    <h4 class="mx-3 my-3 text-center">Remodels</h4>
+    <div class="row">
+    <% galleries.forEach( function(gallery) { %>
+        <% if(gallery.galleryType === "remodel") { %>
+        <div class="col-lg-6 col-sm-12 flex-c-center my-3 mx-0 px-0">
+            <div class="w-90">
+                <a href="/gallery/<%=gallery._id%>">
+                    <img class="figure-custom"
+                        srcset="
+                        imgs/gallery/remodel<%= gallery.galleryNum.toString() %>/0-480.jpg 480w,
+                        imgs/gallery/remodel<%= gallery.galleryNum %>/0-767.jpg 767w,
+                        imgs/gallery/remodel<%= gallery.galleryNum %>/0-1024.jpg 1024w,
+                        imgs/gallery/remodel<%= gallery.galleryNum %>/0-1280.jpg 1280w,
+                        imgs/gallery/remodel<%= gallery.galleryNum %>/0-1280.jpg 1300w"
+                        sizes="100%" 
+                        src="imgs/gallery/remodel<%= gallery.galleryNum %>/0-480.jpg"
+                        alt="Remodel Gallery Screen">
+                </a>
+            </div>
+        </div>
+        <% } %>
+    <% }); %>
+    </div>
+</div>
+
+<script>
+    var galleryDivs = document.querySelectorAll('.position-relative');
+    galleryDivs.forEach((gal) => {
+        gal.addEventListener("mouseover", (e) => {
+            gal.firstChild;
+        });
+        gal.addEventListener("mouseout", (e) => {
+            gal.firstChild;
+        });
+    });
+</script>
+
+<% include ../partials/footer %>
